@@ -1,5 +1,7 @@
-from app.database import SessionLocal
+from app.database import SessionLocal, Base, engine
 from app.models import Product
+
+Base.metadata.create_all(bind=engine)
 
 def seed():
     db = SessionLocal()
