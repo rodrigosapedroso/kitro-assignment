@@ -5,8 +5,13 @@ import type { Products } from "../types";
 export default function Products() {
   
   const [products, setProducts] = useState<Products[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const filteredProducts = products?.filter(product =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     async function fetchProducts() {
@@ -28,26 +33,35 @@ export default function Products() {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <table className="min-w-full bg-white">
-      <thead>
-        <tr>
-          <th className="py-2 px-4">Name</th>
-          <th className="py-2 px-4">Stock Quantity</th>
-          <th className="py-2 px-4">Total Sold</th>
-          <th className="py-2 px-4">Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products?.map((product) => (
-          <tr key={product.name}>
-            <td className="py-2 px-4">{product.name}</td>
-            <td className="py-2 px-4">{product.stock_quantity}</td>
-            <td className="py-2 px-4">{product.total_sold}</td>
-            <td className="py-2 px-4">${product.price}</td>
+    <div className="p-6">
+      <input
+          type="text"
+          placeholder="Search products..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="mb-4 px-3 py-2 border rounded w-full"
+      />
+      <table className="min-w-full bg-white shadow rounded overflow-hidden">
+        <thead>
+          <tr>
+            <th className="py-2 px-4">Name</th>
+            <th className="py-2 px-4">Stock Quantity</th>
+            <th className="py-2 px-4">Total Sold</th>
+            <th className="py-2 px-4">Price</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {filteredProducts?.map((product) => (
+            <tr key={product.name} className="border-b hover:bg-gray-50">
+              <td className="py-2 px-4">{product.name}</td>
+              <td className="py-2 px-4">{product.stock_quantity}</td>
+              <td className="py-2 px-4">{product.total_sold}</td>
+              <td className="py-2 px-4">${product.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
     
 }
