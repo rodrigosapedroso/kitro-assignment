@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar 
-        logo={<img src={kitroLogo} alt="Kitro Logo" className="h-8 w-auto" />} 
+        logo={<img src={kitroLogo} alt="Kitro Logo" className="h-16 w-auto" />} 
         items={items}
       />
       {/* Main content */}

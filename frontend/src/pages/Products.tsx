@@ -8,7 +8,7 @@ export default function Products() {
   
   const [products, setProducts] = useState<Products[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const filteredProducts = products?.filter(product =>
@@ -34,38 +34,41 @@ export default function Products() {
   },
 ];
 
-
   useEffect(() => {
     async function fetchProducts() {
+      const timer = setTimeout(() => setLoading(true), 50) //after 50ms, shoot setLoading(true)
       try {
         const data = await getProducts();
         setProducts(data);
       } catch (err) {
         setError("Failed to fetch products.");
-        console.error(err);
       } finally {
+        clearTimeout(timer) //if fetch under 50ms, cancel timer
         setLoading(false);
       }
     }
-
     fetchProducts();
   }, []);
 
-  if (loading) return <p>Loading products...</p>;
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
     <div className="p-6">
-      <SearchBox 
-        placeholder="Search products..." 
-        value={searchTerm}
-        onChange={setSearchTerm} 
-      />
-      <Table 
-        data={filteredProducts} 
-        headers={headers} 
-      />
+      {loading ? (
+        <p>Loading products...</p>
+      ) : (
+        <div>
+          <SearchBox 
+            placeholder="Search products..." 
+            value={searchTerm}
+            onChange={setSearchTerm} 
+          />
+          <Table 
+            data={filteredProducts} 
+            headers={headers} 
+          />
+        </div>
+      )}   
     </div>
-  );
-    
+  );   
 }
