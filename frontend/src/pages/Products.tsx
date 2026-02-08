@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getProducts } from "../services/api"
 import type { Products } from "../types";
+import Table from "../components/Table";
 
 export default function Products() {
   
@@ -12,6 +13,26 @@ export default function Products() {
   const filteredProducts = products?.filter(product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const headers = [
+  {
+    header: "Name",
+    value: (product: Products) => product.name,
+  },
+  {
+    header: "Stock Quantity (Units",
+    value: (product: Products) => product.stock_quantity,
+  },
+  {
+    header: "Total Sold (Units)",
+    value: (product: Products) => product.total_sold,
+  },
+  {
+    header: "Price (CHF)",
+    value: (product: Products) => product.price.toFixed(2),
+  },
+];
+
 
   useEffect(() => {
     async function fetchProducts() {
@@ -41,26 +62,7 @@ export default function Products() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="mb-4 px-3 py-2 border rounded w-full"
       />
-      <table className="min-w-full bg-white shadow rounded overflow-hidden">
-        <thead>
-          <tr>
-            <th className="py-2 px-4">Name</th>
-            <th className="py-2 px-4">Stock Quantity (Units)</th>
-            <th className="py-2 px-4">Total Sold (Units)</th>
-            <th className="py-2 px-4">Price (CHF)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredProducts?.map((product) => (
-            <tr key={product.name} className="border-b hover:bg-gray-50">
-              <td className="py-2 px-4">{product.name}</td>
-              <td className="py-2 px-4">{product.stock_quantity}</td>
-              <td className="py-2 px-4">{product.total_sold}</td>
-              <td className="py-2 px-4">CHF {product.price}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Table data={filteredProducts} headers={headers} />
     </div>
   );
     
