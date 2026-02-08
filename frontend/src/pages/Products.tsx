@@ -56,7 +56,7 @@ export default function Products() {
               <td className="py-2 px-4">{product.name}</td>
               <td className="py-2 px-4">{product.stock_quantity}</td>
               <td className="py-2 px-4">{product.total_sold}</td>
-              <td className="py-2 px-4">${product.price}</td>
+              <td className="py-2 px-4">CHF {product.price}</td>
             </tr>
           ))}
         </tbody>
