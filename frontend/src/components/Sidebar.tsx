@@ -2,18 +2,20 @@ import type { ReactNode } from "react"
 
 interface SidebarInset{
     label: string;
-    page: () => void;
+    page: string;
+    navigate: () => void;
     icon: ReactNode;
 }
 
 interface SidebarProps {
     logo: ReactNode;
     items: SidebarInset[];
+    activeItem: string | null;
 }
 
-export default function Sidebar({ logo, items }: SidebarProps) {
+export default function Sidebar({ logo, items, activeItem }: SidebarProps) {
     return (
-        <aside className="w-56 bg-kitro-backgroundAlt border-r border-kitro-border p-4 flex flex-col gap-4 items-center">
+        <aside className="w-56 bg-coffee-200 border-r border-coffee-300 p-4 flex flex-col gap-4 items-center">
             <div className="mt-12 flex justify-center w-full">
                 {logo}
             </div>
@@ -21,10 +23,13 @@ export default function Sidebar({ logo, items }: SidebarProps) {
                 {items.map((item, index) => (
                     <button 
                         key={index}
-                        onClick={item.page} 
-                        className="flex items-center gap-2 py-2 px-4 rounded-md border border-kitro-border bg-kitro-backgroundAlt hover:bg-kitro-gray transition-colors">
+                        onClick={item.navigate} 
+                        className={`flex items-center gap-3 w-full px-4 py-2.5 text-black bg-coffee-200 rounded-xl border transition-all duration-200 text-sm font-medium
+                            ${item.page === activeItem
+                                ? "border-coffee-500"
+                                : "border-cream-300 hover:bg-coffee-300"}`}>
                             {item.icon}
-                            <span className="text-base text-kitro-textPrimary">{item.label}</span>   
+                            <span>{item.label}</span>   
                     </button>
                 ))}
             </nav>
