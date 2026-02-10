@@ -50,25 +50,34 @@ export default function Products() {
     fetchProducts();
   }, []);
 
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (error) return <p className="text-red-200">{error}</p>;
 
   return (
-    <div className="p-6">
-      {loading ? (
-        <p>Loading products...</p>
-      ) : (
-        <div>
-          <SearchBox 
-            placeholder="Search products..." 
-            value={searchTerm}
-            onChange={setSearchTerm} 
-          />
-          <Table 
-            data={filteredProducts} 
-            headers={headers} 
-          />
-        </div>
-      )}   
-    </div>
+    <>
+      <h2 className="text-4xl font-medium tracking-wide text-red-200 mb-6 px-6 mt-10 uppercase">
+          HERE YOU CAN FIND 
+          <br />
+          <span className="font-bold">
+            ALL OF YOUR PRODUCTS
+          </span>
+        </h2>
+      <div className="p-6">
+        {loading ? (
+          <p>Loading products...</p>
+        ) : (
+          <div>
+            <SearchBox 
+              placeholder="Search products..." 
+              value={searchTerm}
+              onChange={setSearchTerm} 
+            />
+            <Table 
+              data={filteredProducts} 
+              headers={headers} 
+            />
+          </div>
+        )}   
+      </div>
+    </>
   );   
 }

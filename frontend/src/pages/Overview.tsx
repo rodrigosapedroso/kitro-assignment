@@ -28,16 +28,25 @@ export default function Overview() {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="grid grid-cols-3 gap-6 p-6">
-      {loading? (
-        <p>Loading metrics...</p>
-      ) : (
-        <div className="flex-col space-y-4">
-          <Card label="Total Stock (Units)" value={metrics?.total_stock}/>
-          <Card label="Total Sold (Units)" value={metrics?.total_sold}/>
-          <Card label="Total Gains After Taxes (CHF)" value={metrics?.total_gains_after_taxes.toFixed(2)}/>
-        </div>
-      )}    
-    </div>
+    <>
+      <h2 className="text-4xl font-medium tracking-wide text-red-200 mb-6 px-6 mt-10 uppercase">
+        SOME OF YOUR CORE
+        <br />
+        <span className="font-bold">
+          BUSINESS DATA
+        </span>
+      </h2>
+      <div className="grid grid-cols-3 gap-6 p-6">
+        {loading? (
+          <p>Loading metrics...</p>
+        ) : (
+          <>
+            <Card label="Total Stock (Units)" value={metrics?.total_stock}/>
+            <Card label="Total Sold (Units)" value={metrics?.total_sold}/>
+            <Card label="Total Gains After Taxes (CHF)" value={metrics?.total_gains_after_taxes.toFixed(2)}/>
+          </>
+        )}    
+      </div>
+    </>
   );
 }
