@@ -7,30 +7,38 @@ export default {
   theme: {
     extend: {
       colors: {
-        kitro: {
-          primary: "#ED615F",
-          primaryDark: "#E93A37",
-          accent: "#FFDDA7",
-
-          background: "#FBF9F4",
-          backgroundAlt: "#F7F3E8",
-          surface: "#F3F3EF",
-          surfaceAlt: "#E1E1D6",
-
-          border: "#D3D1C9",
-          borderLight: "#CECEC5",
-
-          textPrimary: "#323232",
-          textSecondary: "#6E6E68",
-          textMuted: "#9E9E96",
-
-          grayLight: "#F7F7F7",
-          gray: "#DBDBDB",
-          grayDark: "#7F7F7F",
-
-          success: "#507E6A",
-          successLight: "#C6e6e3",
+        white: "#FCFCFA",
+        cream: {
+          100: "#FBF9F4",
+          200: "#F7F3E8",
+          300: "#D3D1C9",
+          400: "#ADAAA2",
+          500: "#85837C",
         },
+        coffee: {
+          100: "#F3F3EF",
+          200: "#E1E1D6",
+          300: "#CECEC5",
+          400: "#9E9E96",
+          500: "#6E6E68",
+        },
+        gray: {
+          100: "#F7F7F7",
+          200: "#F2F2F2",
+          300: "#DBDBDB",
+          400: "#B9B8B8",
+          500: "#7F7F7F",
+        },
+        orange: "#FFDDA7",
+        red: {
+          100: "#ED615F",
+          200: "#E93A37",
+        },
+        green: {
+          100: "#C6E6E3",
+          200: "#507E6A",
+        },
+        black: "#323232",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
