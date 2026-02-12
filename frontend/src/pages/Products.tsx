@@ -33,8 +33,6 @@ export default function Products() {
   },
 ];
 
-  if (error) return <p className="text-red-200">{error}</p>;
-
   return (
     <>
       <h2 className="tracking-wide text-red-200 mb-6 px-6 mt-10 uppercase">
