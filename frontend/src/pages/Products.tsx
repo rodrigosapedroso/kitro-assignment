@@ -49,12 +49,14 @@ export default function Products() {
       <div className="p-6">
         {loading ? (
           <p>Loading products...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
         ) : (
           <div>
             <SearchBox 
               placeholder="Search products..." 
               value={searchTerm}
-              onChange={setSearchTerm} 
+              onChange={setSearchTerm}
             />
             <Table 
               data={filteredProducts} 
