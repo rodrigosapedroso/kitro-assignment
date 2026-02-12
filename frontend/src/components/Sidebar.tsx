@@ -24,9 +24,9 @@ export default function Sidebar({ logo, items, activeItem }: SidebarProps) {
                     <button 
                         key={index}
                         onClick={item.navigate} 
-                        className={`flex items-center gap-3 w-full px-4 py-2.5 text-black bg-coffee-200 rounded-xl border transition-all duration-200 text-sm font-medium
+                        className={`flex items-center gap-2 w-full px-4 py-2.5 text-black bg-coffee-200 rounded-xl border transition-all duration-200 text-sm font-medium
                             ${item.page === activeItem
-                                ? "border-coffee-500"
+                                ? "border-green-200"
                                 : "border-cream-300 hover:bg-coffee-300"}`}>
                             {item.icon}
                             <span>{item.label}</span>   

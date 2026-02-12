@@ -9,7 +9,7 @@ export default {
       colors: {
         white: "#FCFCFA",
         cream: {
-          100: "#FBF9F4",
+          100: "#060605ff",
           200: "#F7F3E8",
           300: "#D3D1C9",
           400: "#ADAAA2",
