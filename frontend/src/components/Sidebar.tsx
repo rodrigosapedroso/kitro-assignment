@@ -20,9 +20,9 @@ export default function Sidebar({ logo, items, activeItem }: SidebarProps) {
                 {logo}
             </div>
             <nav className="flex flex-col gap-2 mt-5">
-                {items.map((item, index) => (
+                {items.map((item) => (
                     <button 
-                        key={index}
+                        key={item.label}
                         onClick={item.navigate} 
                         className={`flex items-center gap-2 w-full px-4 py-2.5 text-black bg-coffee-200 rounded-xl border transition-all duration-200 text-sm font-medium
                             ${item.page === activeItem
