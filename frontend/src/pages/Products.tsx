@@ -1,16 +1,15 @@
-import { useState, useEffect } from "react";
-import { getProducts } from "../services/api"
+import { useState } from "react";
 import type { Products } from "../types";
 import Table from "../components/Table";
 import SearchBox from "../components/SearchBox";
+import useProducts from "../hooks/useProducts";
 
 export default function Products() {
-  
-  const [products, setProducts] = useState<Products[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const { products, loading, error } = useProducts();
+  
   const filteredProducts = products?.filter(product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -21,7 +20,7 @@ export default function Products() {
     value: (product: Products) => product.name,
   },
   {
-    header: "Stock Quantity (Units",
+    header: "Stock Quantity (Units)",
     value: (product: Products) => product.stock_quantity,
   },
   {
@@ -34,33 +33,19 @@ export default function Products() {
   },
 ];
 
-  useEffect(() => {
-    async function fetchProducts() {
-      const timer = setTimeout(() => setLoading(true), 50) //after 50ms, shoot setLoading(true)
-      try {
-        const data = await getProducts();
-        setProducts(data);
-      } catch (err) {
-        setError("Failed to fetch products.");
-      } finally {
-        clearTimeout(timer) //if fetch under 50ms, cancel timer
-        setLoading(false);
-      }
-    }
-    fetchProducts();
-  }, []);
-
   if (error) return <p className="text-red-200">{error}</p>;
 
   return (
     <>
-      <h2 className="text-4xl font-medium tracking-wide text-red-200 mb-6 px-6 mt-10 uppercase">
-          HERE YOU CAN FIND 
+      <h2 className="tracking-wide text-red-200 mb-6 px-6 mt-10 uppercase">
+        <span className="text-2xl font-medium">
+          HERE YOU CAN FIND YOUR
           <br />
-          <span className="font-bold">
-            ALL OF YOUR PRODUCTS
-          </span>
-        </h2>
+        </span>
+        <span className="text-4xl font-bold">
+          FULL PRODUCT LISTING
+        </span>
+      </h2>
       <div className="p-6">
         {loading ? (
           <p>Loading products...</p>
