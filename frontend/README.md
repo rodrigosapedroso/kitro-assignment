@@ -3,12 +3,13 @@
 This is the frontend for **Kitro**, a simple inventory management application built to interact with the Kitro API. It provides a clean and intuitive interface to track products, monitor stock levels, visualize sales data, and display key metrics for a restaurant or retail environment.
 
 ## User Stories
-- 1 - Sidebar with Overview and Products navigation tabs
-- 2 - Kitro's branding consistent across the app
-- 6 - Total products sold displayed in Overview page
-- 7 - Total products available displayed in Overview page
-- 8 - Total gains after taxes displayed in Overview page
-- 14 - Searchable table presented in Products page
+
+1. ✅ Persistent sidebar with Overview and Products navigation tabs
+2. ✅ Kitro branding consistent across the application
+6. ✅ Total products sold displayed in Overview page
+7. ✅ Total products available displayed in Overview page
+8. ✅ Total gains after taxes displayed in Overview page
+14. ✅ Searchable table presented in Products page
 
 ## Technology Stack
 - React 19
@@ -19,7 +20,7 @@ This is the frontend for **Kitro**, a simple inventory management application bu
 ## Getting Started
 
 ### Prerequisites
-- Node.js
+- Node.js 18+
 - npm or yarn
 
 ### Installation
@@ -35,15 +36,24 @@ Start the development server:
 ```
 npm run dev
 ```
-The application will be available at http://localhost:5173
+The application will be available at `http://localhost:5173`
 
 ## Project Structure
-- `src/assets/` - Static assets (Kitro logo)
-- `src/components/` - Reusable React UI components
-- `src/hooks/` - Custom React hooks for shared logic and state management
-- `src/pages/` - Application pages
-- `src/services/` - Service module for API communication
-- `src/types/` - TypeScript type definitions
-- `src/App.tsx` - Main application component
-- `src/main.tsx` - Application entry point
+
+```
+frontend/
+├── src/
+│   ├── App.tsx          # Root React component
+│   ├── main.tsx         # Application entry point
+│   ├── assets/          # Static assets (Kitro Logo)
+│   ├── components/      # Reusable UI components
+│   ├── hooks/           # Custom React hooks
+│   ├── pages/           # Page-level components
+│   ├── services/        # API calls 
+│   └── types/           # Shared TypeScript types & interfaces
+├── package.json         # Project metadata and dependencies
+├── README.md            # Frontend documentation
+└── .gitignore           # Frontend-specific ignored files
+```
+
 

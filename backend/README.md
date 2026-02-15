@@ -19,12 +19,11 @@ backend/
 │   ├── models.py        # SQLAlchemy models
 │   ├── schemas.py       # Pydantic schemas
 │   ├── database.py      # Database connection and session
-│   ├── __init__.py      # Makes app a Python package
+│   ├── __init__.py      # Turns app into a Python package
 │   └── main.py          # Application entry point
-├── seed.py              # Script to populate initial data
+├── seed.py              # Database seeding script
 ├── startup.py           # Starts the FastAPI server
-├── .env                 # Environment variables
-├── requirements.txt     # Python dependencies for the backend
+├── requirements.txt     # Python dependencies 
 └── README.md            # Project documentation
 ```
 
